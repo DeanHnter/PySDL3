@@ -1,5 +1,7 @@
 """A pure Python wrapper for SDL3."""
 
+from __future__ import annotations
+
 __version__ = "0.9.8b9"
 
 import os, sys, requests, ctypes, ctypes.util, platform, collections.abc as abc, \
@@ -560,7 +562,7 @@ def SDL_GENERATE_DOCS(modules: list[str] = SDL_MODULES, raw: types.ModuleType | 
     for module in modules:
         for func in __module__.functions[module]:
             if (_ := __module__.functions[module][func]).__name__ == "__inner__": _ = _.func
-            _.__doc__ = (descriptions[__index := __index + 1], arguments[__index], returns[__index])
+            _.__doc__ = (descriptions[(__index := __index + 1)], arguments[__index], returns[__index])
 
     structs = False
     result = "" if rst else "\"\"\"\n# This file is auto-generated, do not modify it.\n__meta__ = "
